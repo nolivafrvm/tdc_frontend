@@ -1,0 +1,72 @@
+<!-- Buscador de datos -->
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" class="form-control" placeholder="Buscar datos..." #txtTermino (keyup)="buscar(txtTermino.value)">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <em class="fa fa-spin fa-refresh fa-2x"></em>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-tittle">Datos ({{datos.length}})</h4>
+                        <h6 class="card-subtitle">
+                            Datos registrados
+                        </h6>
+                    </div>
+
+                    <!-- <div class="col">
+                        <div class="text-right">
+                            <a routerLink="/dato/nuevo" class="btn btn-primary">
+                                <em class="fa fa-hospital-o"></em>Crear Dato
+                            </a>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <caption>Datos</caption>
+                        <thead>
+                            <tr>                                
+                                <th>Id. Dato</th>
+                                <th>Fecha</th>
+                                <th>Valor</th>                                
+                                <th class="w100 text-nowrap">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let dato of datos">                                
+                                <td>{{dato.idDato}}</td>
+                                <td>{{dato.fecha}}</td>
+                                <td>{{dato.valor}}</td>                                
+                                <td>
+                                    <!-- <a [routerLink]="['/','dato', dato.idDato]" data-toggle="tooltip" data-original-title="Editar">
+                                        <em class="fa fa-pencil text-inverse m-r-10"></em></a> -->
+                                    <a class="cursor" data-toggle="tooltip" data-original-title="Borrar" (click)="borrarDato(dato)">
+                                        <em class="fa fa-close text-danger"></em></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

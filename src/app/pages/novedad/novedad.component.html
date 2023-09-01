@@ -1,0 +1,80 @@
+<!-- Buscador de novedades -->
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" class="form-control" placeholder="Buscar novedades..." #txtTermino (keyup)="buscar(txtTermino.value)">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <em class="fa fa-spin fa-refresh fa-2x"></em>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-tittle">Novedades ({{novedades.length}})</h4>
+                        <h6 class="card-subtitle">
+                            Novedades registrados
+                        </h6>
+                    </div>
+
+                    <!-- <div class="col">
+                        <div class="text-right">
+                            <a routerLink="/novedad/nuevo" class="btn btn-primary">
+                                <em class="fa fa-hospital-o"></em>Crear Usuario
+                            </a>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <caption>Novedades</caption>
+                        <thead>
+                            <tr>                                
+                                <th class="text-center">Id. Novedad</th>
+                                <th class="text-center">Fecha</th>
+                                <th class="text-center">Evento</th>
+                                <th class="text-center">Dato Anterior</th>
+                                <th class="text-center">Dato Actual</th>
+                                <th class="text-center">Diferencia</th>
+                                <th class="w100 text-nowrap">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let novedad of novedades" class="text-center">                                
+                                <td>{{novedad.idNovedad}}</td>
+                                <td>{{novedad.fecha | date :'dd/MM/yyyy HH:mm:ss'}}</td>
+
+                                <td *ngIf="novedad.descripcion === 'Carga'"><i class="mdi text-success mdi-arrow-up-bold"></i></td>
+                                <td  *ngIf="novedad.descripcion === 'Descarga'"><i class="mdi text-danger mdi-arrow-down-bold"></i></td>
+                                <td>{{novedad.valorAnterior}}</td>
+                                <td>{{novedad.valorActual}}</td>
+                                <td>{{novedad.diferencia}}</td>                                
+                                <td>
+                                    <!-- <a [routerLink]="['/','novedad', novedad.idNovedad]" data-toggle="tooltip" data-original-title="Editar">
+                                        <em class="fa fa-pencil text-inverse m-r-10"></em></a> -->
+                                    <a class="cursor" data-toggle="tooltip" data-original-title="Borrar" (click)="borrarNovedad(novedad)">
+                                        <em class="fa fa-close text-danger"></em></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

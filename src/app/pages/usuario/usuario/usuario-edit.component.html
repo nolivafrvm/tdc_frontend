@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h4 class="card-title">Usuario</h4>
+                    <h6 class="card-substitle">Actualización información</h6>
+                    <form action="" class="form-horizontal p-t-20" [formGroup]="usuarioForm" (submit)="guardarUsuario()">
+                        <div class="form-group row" *ngIf="usuarioSeleccionado">
+                            <label for="exampleInputname3" class="col-sm-3 control-label">Foto</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <!-- <img [src]="barrioSeleccionado.nombre | imagen: 'barrio'" class="w200" /> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="txtNombre" class="col-sm-3 control-label">Nombre</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="text" formControlName="nombre" class="form-control" id="txtNombre" placeholder="Nombre">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtApellido" class="col-sm-3 control-label">Apellido</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="text" formControlName="apellido" class="form-control" id="txtApellido" placeholder="Apellido">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtUsuario" class="col-sm-3 control-label">Usuario</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="text" formControlName="usuario" class="form-control" id="txtUsuario" placeholder="Usuario">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtEmail" class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="text" formControlName="email" class="form-control" id="txtEmail" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>                                               
+
+                        <div class="form-group row m-b-0">
+                            <div class="offset-sm-3 col-sm-9">
+                                <button type="submit" [disabled]="usuarioForm.invalid" class="btn btn-success waves-effect waves-light">
+                                    <em class="fa fa-save"></em>
+                                    Guardar
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

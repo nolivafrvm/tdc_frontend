@@ -1,0 +1,11 @@
+{
+  "defaultProject": "sensorApp",
+  "projects": {
+    "sensorApp": {
+      "name": "sensorApp",
+      "integrations": {},
+      "type": "angular"
+    }
+  }  
+}
+
