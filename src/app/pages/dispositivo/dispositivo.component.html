@@ -1,9 +1,9 @@
-<!-- Buscador de usuarios -->
+<!-- Buscador de dispositivos -->
 <div class="row animated fadeIn fast">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <input type="text" class="form-control" placeholder="Buscar usuarios..." #txtTermino (keyup)="buscar(txtTermino.value)">
+                <input type="text" class="form-control" placeholder="Buscar dispositivos..." #txtTermino (keyup)="buscar(txtTermino.value)">
             </div>
         </div>
     </div>
@@ -26,42 +26,44 @@
 
                 <div class="row">
                     <div class="col-8">
-                        <h4 class="card-tittle">Usuarios ({{usuarios.length}})</h4>
+                        <h4 class="card-tittle">Dispositivos ({{dispositivos.length}})</h4>
                         <h6 class="card-subtitle">
-                            Usuarios registrados
+                            Dispositivos registrados
                         </h6>
                     </div>
 
                     <div class="col">
                         <div class="text-right">
-                            <a routerLink="/usuario/nuevo" class="btn btn-primary">
-                                <em class="fa fa-hospital-o"></em>Crear Usuario
+                            <a routerLink="/dispositivo/nuevo" class="btn btn-primary">
+                                <em class="fa fa-hospital-o"></em>Crear Dispositivo
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-bordered">
-                        <caption>Usuarios</caption>
+                        <caption>Dispositivos</caption>
                         <thead>
                             <tr>
+                                <th>Id.</th>                                
                                 <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Usuario</th>
-                                <th>Email</th>                                
+                                <th>Descripción</th>
+                                <th>Dir. IP</th>
+                                <th>Puerto</th>                                
                                 <th class="w100 text-nowrap">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let usuario of usuarios">                                
-                                <td>{{usuario.nombre}}</td>
-                                <td>{{usuario.apellido}}</td>
-                                <td>{{usuario.username}}</td>
-                                <td>{{usuario.email}}</td>                                
+                            <tr *ngFor="let dispositivo of dispositivos">                                
+                                <td>{{dispositivo.idDevice}}</td>
+                                <td>{{dispositivo.name}}</td>
+                                <td>{{dispositivo.description}}</td>
+                                <td>{{dispositivo.ipaddress}}</td>
+                                <td>{{dispositivo.port}}</td>                                
                                 <td>
-                                    <a [routerLink]="['/','usuario', usuario.idUsuario]" data-toggle="tooltip" data-original-title="Editar">
+                                    <a [routerLink]="['/','dispositivo', dispositivo.idDevice]" data-toggle="tooltip" data-original-title="Editar">
                                         <em class="fa fa-pencil text-inverse m-r-10"></em></a>
-                                    <a class="cursor" data-toggle="tooltip" data-original-title="Borrar" (click)="borrarUsuario(usuario)">
+                                    <a class="cursor" data-toggle="tooltip" data-original-title="Borrar" (click)="borrarDispositivo(dispositivo)">
                                         <em class="fa fa-close text-danger"></em></a>
                                 </td>
                             </tr>

@@ -22,6 +22,8 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
 import stock from 'highcharts/modules/stock.src';
 import more from 'highcharts/highcharts-more.src';
+import { DispositivoComponent } from './dispositivo/dispositivo.component';
+import { DispositivoEditComponent } from './dispositivo/dispositivo-edit.component';
 
 export function highchartsModules() {
   // apply Highcharts Modules to this array
@@ -34,7 +36,7 @@ export function highchartsModules() {
     AccountSettingsComponent,
     UsuarioComponent,
     DashboardComponent,    
-    UsuarioEditComponent, DatoComponent, NovedadComponent,        
+    UsuarioEditComponent, DatoComponent, NovedadComponent, DispositivoComponent, DispositivoEditComponent,        
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,136 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h4 class="card-title">Dispositivo</h4>
+                    <h6 class="card-substitle">Actualización información</h6>
+                    <form action="" class="form-horizontal p-t-20" [formGroup]="dispositivoForm" (submit)="guardarDispositivo()">                        
+                        <div class="form-group row">
+                            <label for="txtName" class="col-sm-3 control-label">Nombre</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="text" formControlName="name" class="form-control" id="txtName" placeholder="Nombre">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtDescripcion" class="col-sm-3 control-label">Descripción</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="text" formControlName="description" class="form-control" id="txtDescripcion" placeholder="Descripción">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtIpAddress" class="col-sm-3 control-label">Ip Address</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="text" formControlName="ipaddress" class="form-control" id="txtIpAddress" placeholder="Ip. Address">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtPort" class="col-sm-3 control-label">Port</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="text" formControlName="port" class="form-control" id="txtPort" placeholder="Port">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="txtKp" class="col-sm-3 control-label">Kp</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="number" formControlName="kp" class="form-control" id="txtKp" placeholder="kp">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtKd" class="col-sm-3 control-label">Kd</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="number" formControlName="kd" class="form-control" id="txtKd" placeholder="kd">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtKi" class="col-sm-3 control-label">Ki</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="number" formControlName="ki" class="form-control" id="txtKi" placeholder="ki">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtSetPoint" class="col-sm-3 control-label">SetPoint</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="number" formControlName="setpoint" class="form-control" id="txtSetPoint" placeholder="Set Point">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtIpaddressserver" class="col-sm-3 control-label">Ip Server</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="text" formControlName="ipaddressserver" class="form-control" id="txtIpaddressserver" placeholder="IP Server">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtPortserver" class="col-sm-3 control-label">Port Server</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="number" formControlName="portserver" class="form-control" id="txtPortserver" placeholder="Port Server">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtGrabacion" class="col-sm-3 control-label">Periodo de grabación (Ms)</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="number" formControlName="recordPeriod" class="form-control" id="txtGrabacion" placeholder="Periodo de grabación">
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="form-group row m-b-0 my-2">
+                            <div class="offset-sm-3 col-sm-9">
+                                <button type="submit" [disabled]="dispositivoForm.invalid" class="btn btn-success waves-effect waves-light">
+                                    <em class="fa fa-save"></em>
+                                    Guardar
+                                </button>                                
+                                <button type="button" [disabled]="dispositivoForm.invalid" class="btn btn-warning waves-effect waves-light my-2" style="margin-left: 5px;" (click)="configurarDispositivo(dispositivoSeleccionado.idDevice)">
+                                    <em class="fa fa-save"></em>
+                                    Configurar Arduino
+                                </button>
+                            </div>
+                        </div>                                                                                                      
+                    </form>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

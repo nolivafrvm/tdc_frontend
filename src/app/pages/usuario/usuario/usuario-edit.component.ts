@@ -31,7 +31,7 @@ export class UsuarioEditComponent implements OnInit {
     this.usuarioForm = this.fb.group({
       nombre : ['' , Validators.required],
       apellido : ['', Validators.required],
-      usuario : ['', Validators.required],
+      username : ['', Validators.required],
       email : ['', Validators.required]})    
   }
 

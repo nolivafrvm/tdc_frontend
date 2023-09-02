@@ -16,6 +16,7 @@ export class SidebarService {
         submenu: [
           { titulo: 'Dashboard', url: '/dashboard' },
           { titulo: 'Datos de Sensor', url: '/dato' },
+          { titulo: 'Dispositivos', url: '/dispositivo' },
           { titulo: 'Novedades', url: '/novedad' }          
         ],
       },            
