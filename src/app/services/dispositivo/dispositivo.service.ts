@@ -62,8 +62,8 @@ export class DispositivoService {
       }));
   }  
 
-  configurarDispositivo(idDispositivo: number): Observable<any> {
-    const url = `${base_url}/dispositivo/configurar/${idDispositivo}`;
+  configurarDispositivo(idDispositivo: number, action: string): Observable<any> {
+    const url = `${base_url}/dispositivo/configurar/${idDispositivo}/${action}`;
     return this.http.get(url);
   }
 

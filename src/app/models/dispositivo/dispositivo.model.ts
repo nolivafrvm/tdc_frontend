@@ -11,6 +11,9 @@ export class Dispositivo {
   public ipaddressserver: string;
   public portserver: number;
   public recordPeriod: number;
+  public gateway: string;
+  public subMask: string;      
+  public idConfiguracion: string;
 
   public constructor(init?: Partial<Dispositivo>) {
     Object.assign(this, init);

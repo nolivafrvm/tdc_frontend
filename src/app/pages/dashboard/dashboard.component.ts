@@ -4,6 +4,7 @@ import { Dato } from 'src/app/models/dato/dato.model';
 import { Novedad } from 'src/app/models/novedad/novedad.model';
 import { DatoService, NovedadService } from 'src/app/services/service.index';
 import { StockChart} from 'angular-highcharts';
+import { WebSocketService } from 'src/app/services/websocket/web.socket.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,13 +37,15 @@ export class DashboardComponent implements OnInit {
 
    // Variables para graficos   
    public dataSerieStock = [];
+   public receivedMessage: string;
 
 
 
    esCarga: boolean;
    
   constructor(private datoService: DatoService,
-   private novedadService:NovedadService) {
+   private novedadService:NovedadService,
+   private webSocketService: WebSocketService) {
 
   }  
 
@@ -51,8 +54,12 @@ export class DashboardComponent implements OnInit {
    this.traerUltimaNovedad();
    this.datoFechaFin = new Date().toISOString();
    this.datoFechaInicio = new Date(this.getYesterday()).toISOString();      
-   this.cargarDatos();
-   console.log(this.ultimaNovedad.descripcion)
+   this.cargarDatos();   
+   this.webSocketService.connect();   
+   this.webSocketService.receiveMessage().subscribe((message: string) => {
+      this.receivedMessage = message;
+      
+    });
  }
 
  prueba(){

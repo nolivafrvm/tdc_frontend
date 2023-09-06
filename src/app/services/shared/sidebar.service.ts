@@ -14,10 +14,7 @@ export class SidebarService {
         titulo: 'Principal',
         icono: 'mdi mdi-gauge',
         submenu: [
-          { titulo: 'Dashboard', url: '/dashboard' },
-          { titulo: 'Datos de Sensor', url: '/dato' },
-          { titulo: 'Dispositivos', url: '/dispositivo' },
-          { titulo: 'Novedades', url: '/novedad' }          
+          { titulo: 'Dashboard', url: '/dashboard' }            
         ],
       },            
       {
@@ -25,7 +22,10 @@ export class SidebarService {
         icono: 'mdi mdi-folder-lock-open',
         submenu: [
           { titulo: 'Conf. Novedades', url: '/conf-novedades' },          
-          { titulo: 'Usuarios', url: '/usuario' },
+          { titulo: 'Datos de Sensor', url: '/dato' },                    
+          { titulo: 'Dispositivos', url: '/dispositivo' },
+          { titulo: 'Novedades', url: '/novedad' } ,
+          { titulo: 'Usuarios', url: '/usuario' }
         ],
       },
       {

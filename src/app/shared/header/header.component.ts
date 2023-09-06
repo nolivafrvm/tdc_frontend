@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(public _usuarioService:UsuarioService) { }
 
   ngOnInit(): void {
-    this.usuario = new Usuario('Nico','nico@test','','img');
+    this.usuario = new Usuario('admin','admin@test','','img');
   }
 
   buscar(value:string) {

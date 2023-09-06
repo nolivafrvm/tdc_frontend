@@ -4,8 +4,8 @@
     <div class="col-md-6">             
         <div class="card widget-flat">
             <div class="card-body" style="text-align: center;">                
-                <h5 class="text-muted fw-normal mt-0" title="Temperatura">Temperatura Actual</h5>
-                <h1 class="mt-3 mb-3">{{ultimoDato.valor}}</h1>
+                <h5 class="text-muted fw-normal mt-0" title="Temperatura">Temperatura Actual </h5>
+                <h1 class="mt-3 mb-3">{{ultimoDato.valor}}º</h1>
                 <div *ngIf="!this.esCarga">
                 <p class="mb-0 text-muted">
                     <span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i> {{porcentajeVariacion | number : '1.2-2'}}%</span>
@@ -24,14 +24,13 @@
             <div class="card-body" style="text-align: center;">                
                 <h5 class="text-muted fw-normal mt-0" title="Set Point">Set Point</h5>
                 <!-- <h1 class="mt-3 mb-3">{{porcentajeOcupacion | number : '1.2-2'}} %</h1>                 -->
-                <h1 class="mt-3 mb-3">17</h1>                
+                <h1 class="mt-3 mb-3">{{ultimoDato.setpoint}}º</h1>                
             </div> 
         </div>        
         <div class="card widget-flat">
             <div class="card-body" style="text-align: center;">                
-                <h5 class="text-muted fw-normal mt-0" title="Ultima Novedad">Ultima novedad</h5>
-                <h3 class="mt-3 mb-3">{{ultimaNovedad.descripcion}}</h3>
-                <h2 class="mt-3 mb-3">{{ultimaNovedad.diferencia}}</h2>                
+                <h5 class="text-muted fw-normal mt-0" title="Ultima Novedad">Velocidad Ventilador</h5>
+                <h2 class="mt-3 mb-3">{{ultimoDato.rpm}} RPM</h2>                
                 <p class="mb-0 text-muted">                    
                     <span class="text-nowrap">{{ultimaNovedad.fecha | date :'dd/MM/yyyy HH:mm:ss'}}<br/></span>
                 </p>

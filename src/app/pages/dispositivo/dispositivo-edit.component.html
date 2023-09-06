@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-8">
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
@@ -32,6 +32,26 @@
                                 <div class="input-group">
                                     <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
                                     <input type="text" formControlName="ipaddress" class="form-control" id="txtIpAddress" placeholder="Ip. Address">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtGateway" class="col-sm-3 control-label">Ip Gateway</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="text" formControlName="gateway" class="form-control" id="txtGateway" placeholder="Ip. Gateway">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="txtSubmask" class="col-sm-3 control-label">Submask</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <div class="input-group-addon"><em class="ti-layout-grid3"></em></div>
+                                    <input type="text" formControlName="subMask" class="form-control" id="txtSubmask" placeholder="Submask">
                                 </div>
                             </div>
                         </div>
@@ -122,9 +142,21 @@
                                     <em class="fa fa-save"></em>
                                     Guardar
                                 </button>                                
-                                <button type="button" [disabled]="dispositivoForm.invalid" class="btn btn-warning waves-effect waves-light my-2" style="margin-left: 5px;" (click)="configurarDispositivo(dispositivoSeleccionado.idDevice)">
+                                <button type="button" [disabled]="dispositivoForm.invalid" class="btn btn-warning waves-effect waves-light my-2" style="margin-left: 5px;" (click)="configurarDispositivo(dispositivoSeleccionado.idDevice, '1')">
                                     <em class="fa fa-save"></em>
-                                    Configurar Arduino
+                                    Config. Arduino
+                                </button>
+                                <button type="button" [disabled]="dispositivoForm.invalid" class="btn btn-info waves-effect waves-light my-2" style="margin-left: 5px;" (click)="configurarDispositivo(dispositivoSeleccionado.idDevice, '2')">
+                                    <em class="fa fa-save"></em>
+                                    Relay ON
+                                </button>
+                                <button type="button" [disabled]="dispositivoForm.invalid" class="btn btn-info waves-effect waves-light my-2" style="margin-left: 5px;" (click)="configurarDispositivo(dispositivoSeleccionado.idDevice, '3')">
+                                    <em class="fa fa-save"></em>
+                                    Relay OFF
+                                </button>
+                                <button type="button" [disabled]="dispositivoForm.invalid" class="btn btn-error waves-effect waves-light my-2" style="margin-left: 5px;" (click)="configurarDispositivo(dispositivoSeleccionado.idDevice, '4')">
+                                    <em class="fa fa-save"></em>
+                                    Config. de Fabrica
                                 </button>
                             </div>
                         </div>                                                                                                      

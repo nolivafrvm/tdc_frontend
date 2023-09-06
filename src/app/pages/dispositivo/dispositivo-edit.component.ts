@@ -39,6 +39,8 @@ export class DispositivoEditComponent implements OnInit {
       setpoint : ['', Validators.required],
       ipaddressserver : ['', Validators.required],
       portserver : ['', Validators.required],
+      gateway : ['', Validators.required],
+      subMask : ['', Validators.required],
       recordPeriod : ['', Validators.required]});
   }
 
@@ -83,9 +85,9 @@ export class DispositivoEditComponent implements OnInit {
   }
 
 
-  configurarDispositivo(id:number) {   
-    console.log("Configurando dispositivo");     
-    return this.dispositivoService.configurarDispositivo(id)
+  configurarDispositivo(id:number, action: string) {   
+    console.log("Configurando dispositivo " + action);     
+    return this.dispositivoService.configurarDispositivo(id, action)
       .subscribe((resp:Dispositivo) => {
         if (resp) {
           Swal.fire('Configurado', `${ resp.name } configurado correctamente`, 'success');

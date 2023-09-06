@@ -12,6 +12,9 @@ import { PagesComponent } from './pages/pages.component';
 import { ServiceModule } from './services/service.module';
 import { SharedModule } from './shared/shared.module';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:8080/socket.io', options: {} };
 
 
 
@@ -30,7 +33,8 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     ServiceModule,
-    SharedModule    
+    SharedModule,    
+    SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent],
