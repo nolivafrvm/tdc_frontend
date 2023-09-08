@@ -47,26 +47,16 @@
                             <tr>                                
                                 <th class="text-center">Id. Novedad</th>
                                 <th class="text-center">Fecha</th>
-                                <th class="text-center">Evento</th>
-                                <th class="text-center">Dato Anterior</th>
-                                <th class="text-center">Dato Actual</th>
-                                <th class="text-center">Diferencia</th>
+                                <th class="text-center">Evento</th>                                
                                 <th class="w100 text-nowrap">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let novedad of novedades" class="text-center">                                
                                 <td>{{novedad.idNovedad}}</td>
-                                <td>{{novedad.fecha | date :'dd/MM/yyyy HH:mm:ss'}}</td>
-
-                                <td *ngIf="novedad.descripcion === 'Carga'"><i class="mdi text-success mdi-arrow-up-bold"></i></td>
-                                <td  *ngIf="novedad.descripcion === 'Descarga'"><i class="mdi text-danger mdi-arrow-down-bold"></i></td>
-                                <td>{{novedad.valorAnterior}}</td>
-                                <td>{{novedad.valorActual}}</td>
-                                <td>{{novedad.diferencia}}</td>                                
-                                <td>
-                                    <!-- <a [routerLink]="['/','novedad', novedad.idNovedad]" data-toggle="tooltip" data-original-title="Editar">
-                                        <em class="fa fa-pencil text-inverse m-r-10"></em></a> -->
+                                <td>{{novedad.fecha | date :'dd/MM/yyyy HH:mm:ss'}}</td>                                
+                                <td>{{novedad.descripcion}}</td>                                
+                                <td>                                    
                                     <a class="cursor" data-toggle="tooltip" data-original-title="Borrar" (click)="borrarNovedad(novedad)">
                                         <em class="fa fa-close text-danger"></em></a>
                                 </td>

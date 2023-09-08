@@ -5,6 +5,7 @@ export class Dato {
         public idDato? : string;    
         public idDispositivo: string;
         public outputPid: string;
+        public porcentaje: string;
         public rpm: string;
         public kp: string;
         public kd: string;

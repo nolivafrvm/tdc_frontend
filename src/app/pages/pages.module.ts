@@ -24,6 +24,7 @@ import stock from 'highcharts/modules/stock.src';
 import more from 'highcharts/highcharts-more.src';
 import { DispositivoComponent } from './dispositivo/dispositivo.component';
 import { DispositivoEditComponent } from './dispositivo/dispositivo-edit.component';
+import { StompService } from '../services/websocket/stomp.service';
 
 export function highchartsModules() {
   // apply Highcharts Modules to this array
@@ -47,7 +48,7 @@ export function highchartsModules() {
     ReactiveFormsModule,
     HighchartsChartModule,
     ChartModule 
-  ], providers:[{ provide: HIGHCHARTS_MODULES, useFactory: highchartsModules } ],// add as factory to your providers],
+  ], providers:[{ provide: HIGHCHARTS_MODULES, useFactory: highchartsModules }, StompService ],// add as factory to your providers],
    exports: [
     SharedModule,
     DashboardComponent

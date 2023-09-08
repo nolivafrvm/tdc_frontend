@@ -13,6 +13,7 @@ import { ServiceModule } from './services/service.module';
 import { SharedModule } from './shared/shared.module';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { StompService } from './services/websocket/stomp.service';
 
 const config: SocketIoConfig = { url: 'http://localhost:8080/socket.io', options: {} };
 

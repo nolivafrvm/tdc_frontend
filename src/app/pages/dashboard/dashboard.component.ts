@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Dato } from 'src/app/models/dato/dato.model';
 import { Novedad } from 'src/app/models/novedad/novedad.model';
 import { DatoService, NovedadService } from 'src/app/services/service.index';
 import { StockChart} from 'angular-highcharts';
-import { WebSocketService } from 'src/app/services/websocket/web.socket.service';
+import { StompService } from 'src/app/services/websocket/stomp.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -12,11 +13,13 @@ import { WebSocketService } from 'src/app/services/websocket/web.socket.service'
   styles: [
   ]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit  {
 
    public datos: Dato[] = [];
    public cargando: boolean = true;
    stock: StockChart;  
+   
+   
    
    // Widget Uno
    public ultimoDato:Dato = new Dato();
@@ -41,11 +44,11 @@ export class DashboardComponent implements OnInit {
 
 
 
-   esCarga: boolean;
+   esCarga: boolean;   
    
   constructor(private datoService: DatoService,
    private novedadService:NovedadService,
-   private webSocketService: WebSocketService) {
+   private stompService: StompService) {
 
   }  
 
@@ -54,22 +57,15 @@ export class DashboardComponent implements OnInit {
    this.traerUltimaNovedad();
    this.datoFechaFin = new Date().toISOString();
    this.datoFechaInicio = new Date(this.getYesterday()).toISOString();      
-   this.cargarDatos();   
-   this.webSocketService.connect();   
-   this.webSocketService.receiveMessage().subscribe((message: string) => {
-      this.receivedMessage = message;
-      
-    });
- }
-
- prueba(){
-   this.esCarga = this.ultimaNovedad.descripcion === 'Carga' ? true : false;
- }
+   this.cargarDatos();  
+   this.stompService.subscribe("/topic/nuevoDato", (resp:any) => {      
+      this.ultimoDato = JSON.parse(resp.body);;
+      this.getPorcentaje(this.ultimoDato);
+   });    
+ } 
  
  getPorcentajeVariacion() {
-   if (this.ultimaNovedad && this.ultimoDato) {      
-      this.porcentajeVariacion = (((Number(this.ultimoDato.valor)/Number(this.ultimaNovedad.valorAnterior))-1)*100);         
-   }
+   return 0;
  }
 
  crearStockChart() {   
@@ -96,7 +92,7 @@ export class DashboardComponent implements OnInit {
       }
       },
       tooltip: {
-         valueSuffix:" Lts"
+         valueSuffix:" ºC"
       },
       series: [{
         tooltip: {
@@ -143,8 +139,7 @@ export class DashboardComponent implements OnInit {
       .subscribe(novedad => {
          if (novedad) {
             this.ultimaNovedad = novedad;
-            this.getPorcentajeVariacion();
-            this.prueba()
+            this.getPorcentajeVariacion();            
          }
       });
  }
